@@ -43,11 +43,12 @@ class Menu(QMainWindow):
             underscored = self.new_game.get_underscored_word(self.new_game.word['word'])
             # Set human player
             human_player = human.HumanPlayer(self.player_name.toPlainText(), self.new_game.word['category'],
-                                             underscored, turn=True)
+                                             underscored, [], turn=True)
 
             # Set computer player
             computer_player = computer.ComputerPlayer(self.new_game.word['category'],
-                                                      underscored, name=self.computer_name.toPlainText(), turn=False)
+                                                      underscored, [], turn=False,
+                                                      name=self.computer_name.toPlainText())
             # New window
             self.close()
             print(self.new_game.word['word'])

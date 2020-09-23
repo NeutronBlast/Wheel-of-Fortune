@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>930</width>
-    <height>664</height>
+    <height>663</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,8 +32,8 @@
   <widget class="QLabel" name="prize_l">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>150</y>
+     <x>650</x>
+     <y>140</y>
      <width>141</width>
      <height>51</height>
     </rect>
@@ -45,8 +45,8 @@
   <widget class="QLabel" name="spin_btn">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>40</y>
+     <x>440</x>
+     <y>440</y>
      <width>181</width>
      <height>51</height>
     </rect>
@@ -72,7 +72,7 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>100</y>
+     <y>40</y>
      <width>321</width>
      <height>71</height>
     </rect>
@@ -84,8 +84,8 @@
   <widget class="QLabel" name="cat_l">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>20</y>
+     <x>650</x>
+     <y>40</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -110,7 +110,7 @@
   <widget class="QLabel" name="turn_l">
    <property name="geometry">
     <rect>
-     <x>690</x>
+     <x>650</x>
      <y>90</y>
      <width>141</width>
      <height>51</height>
@@ -124,7 +124,7 @@
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>400</y>
+     <y>410</y>
      <width>151</width>
      <height>20</height>
     </rect>
@@ -153,9 +153,9 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>170</y>
-     <width>321</width>
-     <height>101</height>
+     <y>110</y>
+     <width>291</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="text">
@@ -171,14 +171,81 @@
   <widget class="QLabel" name="balance_l">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>210</y>
+     <x>320</x>
+     <y>190</y>
      <width>141</width>
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 170, 0)</string>
+   </property>
    <property name="text">
-    <string>BALANCE:</string>
+    <string>BALANCE (PLAYER):</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="letter_error_msg">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>380</y>
+     <width>661</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>Error message</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="balance_l_cpu">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>190</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>BALANCE (CPU):</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="hits_l">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>240</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 170, 0)</string>
+   </property>
+   <property name="text">
+    <string>HITS (PLAYER):</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="hits_l_cpu">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>240</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>HITS (CPU):</string>
    </property>
   </widget>
  </widget>

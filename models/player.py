@@ -1,5 +1,5 @@
 class Player:
-    def __init__(self, name, category, phrase, guessed=[], letter="", money=0, prize=0,
+    def __init__(self, name, category, phrase, guessed, letter="", money=0, prize=0,
                  prizes_won=[], turn=False, winner=False):
         self.name = name
         self.category = category
@@ -37,7 +37,12 @@ class Player:
         if self.letter.lower() in complete_word:
             # Occurrences of letter in word
             times = complete_word.count(self.letter)
-            m = (self.prize * times) + self.money
+
+            # Vowels cost 250
+            if self.letter not in ['a', 'e', 'i', 'o', 'u']:
+                m = (self.prize * times) + self.money
+            else:
+                m = (self.prize * times) - 250 + self.money
 
             # Replace underscores
             self.replace_underscores(complete_word.lower())
@@ -47,10 +52,6 @@ class Player:
 
         else:
             self.turn = not self.turn
-
-        # Vowels cost $250
-        if self.money >= 250 and len(self.letter) > 0 and self.letter in ['a', 'e', 'i', 'o', 'u']:
-            m = self.money - 250
 
         self.guessed.append(self.letter)
         return m, guessed
