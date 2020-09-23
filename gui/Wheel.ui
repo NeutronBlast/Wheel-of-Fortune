@@ -26,14 +26,14 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>design/wheel.png</pixmap>
+    <pixmap>../design/wheel.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="prize_l">
    <property name="geometry">
     <rect>
      <x>690</x>
-     <y>230</y>
+     <y>150</y>
      <width>141</width>
      <height>51</height>
     </rect>
@@ -55,7 +55,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>design/spin_btn.png</pixmap>
+    <pixmap>../design/spin_btn.png</pixmap>
    </property>
   </widget>
   <widget class="QTextEdit" name="guess_txt">
@@ -85,7 +85,7 @@
    <property name="geometry">
     <rect>
      <x>690</x>
-     <y>100</y>
+     <y>20</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -111,7 +111,7 @@
    <property name="geometry">
     <rect>
      <x>690</x>
-     <y>170</y>
+     <y>90</y>
      <width>141</width>
      <height>51</height>
     </rect>
@@ -146,7 +146,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>design/guess_btn.png</pixmap>
+    <pixmap>../design/guess_btn_disabled.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="guessed_l">
@@ -166,6 +166,19 @@
    </property>
    <property name="wordWrap">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="balance_l">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>210</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>BALANCE:</string>
    </property>
   </widget>
  </widget>

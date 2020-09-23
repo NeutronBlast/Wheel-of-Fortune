@@ -6,6 +6,9 @@ user friendly playable game
  In this game the player will play against the `Computer Player`, the user enters the name of the players,
  the program will choose a random category and a random phrase and the game starts.
  
+ The player will spin the wheel and get a random prize, if they prize is `bankrupt` player loses all their money and
+ the turn
+ 
  The player will input in a textfield the letter they think it appears in the phrase, vowels have a cost of $250, so, 
  unless the player has a balance equal or superior to that number they won't be able to input vowels. If the user inputs
  a letter that exists in the word they will gain as many money the wheel indicated multiplied for the number of occurrences
