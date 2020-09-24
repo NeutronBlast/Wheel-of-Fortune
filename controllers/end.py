@@ -2,6 +2,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QDialog
 import main
 import sys
+from PyQt5.QtGui import QIcon
 
 
 class EndScreen(QDialog):
@@ -11,7 +12,9 @@ class EndScreen(QDialog):
         self.winner = winner
 
         # Set UI
-        self.winner_l.setText(self.winner.name+" has won $"+str(self.winner.money))
+        self.setWindowTitle('Wheel of Fortune')
+        self.setWindowIcon(QIcon('design/wheel.png'))
+        self.winner_l.setText(self.winner.name + " has won $" + str(self.winner.money))
 
         # Set buttons
         self.retry_btn.mousePressEvent = self.restart_game

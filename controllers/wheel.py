@@ -2,7 +2,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QDialog
 import random
 from controllers import end
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QIcon
 
 
 class Wheel(QDialog):
@@ -28,16 +28,24 @@ class Wheel(QDialog):
         self.guess_state = False
 
         # Set UI
+        self.setWindowTitle('Wheel of Fortune | '+self.player.name+" VS "+self.computer.name)
+        self.setWindowIcon(QIcon('design/wheel.png'))
         self.word_l.setText("WORD: " + player.phrase + " (" + str(len(player.phrase)) + " LETTERS)")
         self.cat_l.setText("CATEGORY: " + player.category)
-        self.turn_l.setText("TURN: " + player.name)
-        self.balance_l.setText("BALANCE: $" + str(player.money))
-        self.balance_l_cpu.setText("BALANCE: $" + str(computer.money))
+        self.balance_l.setText("BALANCE ({}): ${}".format(self.player.name, self.player.money))
+        self.balance_l_cpu.setText("BALANCE ({}): ${}".format(self.computer.name, self.computer.money))
         self.letter_error_msg.setHidden(True)
 
         # Set buttons
         self.spin_btn.mousePressEvent = self.get_prize
         self.guess_btn.mousePressEvent = self.validate_input
+        self.phrase_checkbox.stateChanged.connect(self.state_changed)
+
+    def state_changed(self, int):
+        if self.phrase_checkbox.isChecked():
+            self.disable_spin_enable_guess()
+        else:
+            self.disable_guess_enable_spin()
 
     def cpu_wheel_value(self):
         random_prize = random.choice(self.wheel_cpu)
@@ -58,12 +66,13 @@ class Wheel(QDialog):
             if self.player.prize == 'bankrupt':
                 self.player.go_bankrupt()
                 self.computer.turn = True
-                print("went bankrupt")
+                self.balance_l.setText("BALANCE ({}): ${}".format(self.player.name, self.player.money))
+                # print("went bankrupt")
                 self.try_guess(event)
             elif self.player.prize == 'lose a turn':
                 self.player.lose_a_turn()
                 self.computer.turn = True
-                print("lost a  turn")
+                # print("lost a  turn")
                 self.try_guess(event)
         else:
             return
@@ -135,7 +144,7 @@ class Wheel(QDialog):
                     self.disable_guess_enable_spin()
 
                 # Set UI
-                self.balance_l.setText("BALANCE: $" + str(self.player.money))
+                self.balance_l.setText("BALANCE ({}): ${}".format(self.player.name, self.player.money))
                 hits = len([item for item in self.player.guessed if item in self.word])
                 self.hits_l.setText("HITS (PLAYER): " + str(hits))
                 self.word_l.setText("WORD: " + self.player.phrase + " (" + str(len(self.player.phrase)) + " LETTERS)")
@@ -148,29 +157,20 @@ class Wheel(QDialog):
                 self.player.winner, self.player.turn = self.player.guess_entire_phrase(self.word.lower(),
                                                                                        self.player.letter)
 
-        if self.computer.turn:
-            # Computer's turn
-            self.turn_l.setText("TURN: " + self.computer.name)
+        while self.computer.turn:
+            hits = len([item for item in self.computer.guessed if item in self.word])
+            self.hits_l_cpu.setText("HITS (CPU): " + str(hits))
 
-            while self.computer.turn:
-                # print(self.computer)
+            # Set UI
+            self.balance_l_cpu.setText("BALANCE ({}): ${}".format(self.computer.name, self.computer.money))
+            # Set computer's move
+            self.computer.prize = self.cpu_wheel_value()
+            self.computer.letter = self.computer.get_move()
+            self.computer.money, self.computer.turn = self.computer.guess(self.word.lower())
 
-                # Only print non-empty list to avoid errors
-                if len(self.computer.guessed) > 0:
-                    hits = len([item for item in self.computer.guessed if item in self.word])
-                    self.hits_l_cpu.setText("HITS (CPU): " + str(hits))
-
-                # Set UI
-                self.balance_l_cpu.setText("BALANCE: $" + str(self.computer.money))
-
-                # Set computer's move
-                self.computer.prize = self.cpu_wheel_value()
-                self.computer.letter = self.computer.get_move()
-                self.computer.money, self.computer.turn = self.computer.guess(self.word.lower())
-
-            if not self.computer.turn:
-                self.player.turn = True
-                self.disable_guess_enable_spin()
+        if not self.computer.turn:
+            self.player.turn = True
+            self.disable_guess_enable_spin()
 
         # If no more letters left to guess or user guesses the complete word user wins
         if self.player.winner or self.player.phrase.lower() == self.word.lower():
@@ -178,7 +178,7 @@ class Wheel(QDialog):
             end_game_screen = end.EndScreen(self.player)
             end_game_screen.exec_()
 
-        if self.computer.winner or self.computer.phrase.lower() == self.word.lower():
+        if self.computer.phrase.lower() == self.word.lower():
             self.close()
             end_game_screen = end.EndScreen(self.computer)
             end_game_screen.exec_()

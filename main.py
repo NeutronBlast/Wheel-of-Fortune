@@ -18,6 +18,8 @@ class Menu(QMainWindow):
         uic.loadUi("gui/Menu.ui", self)
         # Set UI
         self.player_error_msg.setHidden(True)
+        self.setWindowTitle('Wheel of Fortune')
+        self.setWindowIcon(QIcon('design/wheel.png'))
         # Define button events
         self.start_btn.mousePressEvent = self.enable_wheel
 
@@ -46,12 +48,15 @@ class Menu(QMainWindow):
                                              underscored, [], turn=True)
 
             # Set computer player
-            computer_player = computer.ComputerPlayer(self.new_game.word['category'],
-                                                      underscored, [], turn=False,
-                                                      name=self.computer_name.toPlainText())
+            if len(self.computer_name.toPlainText()) == 0 or re.match("^\s*$", str(self.computer_name.toPlainText())):
+                computer_player = computer.ComputerPlayer(self.new_game.word['category'],
+                                                          underscored, [], turn=False)
+            else:
+                computer_player = computer.ComputerPlayer(self.new_game.word['category'], underscored, [], turn=False,
+                                                          name=self.computer_name.toPlainText())
             # New window
             self.close()
-            print(self.new_game.word['word'])
+            # print(self.new_game.word['word'])
             wheel_wn = wheel.Wheel(self.new_game.word['word'], human_player, computer_player)
             wheel_wn.exec_()
 

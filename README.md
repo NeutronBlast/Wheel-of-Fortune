@@ -22,4 +22,19 @@ user friendly playable game
  
  The number added to the balance will be: `2*500 = 1000`
  
- If the player guesses the word correctly they get to keep the turn, otherwise it will be the other player's (CPU) turn
+ If the player guesses the word correctly they get to keep the turn, otherwise it will be the other player's (CPU).
+ Given that the player has the advantage of guessing the whole word (which CPU hasn't), CPU doesn't have the possibility
+ of going bankrupt or losing a turn in the wheel, so the game gets balanced a little bit.
+ 
+## Built with
+1. [Python 3.9](https://docs.python.org/3.9/whatsnew/3.9.html)
+2. [PyQT5](https://pypi.org/project/PyQt5/)
+
+## Resources
+1. [QTDesigner](https://doc.qt.io/qt-5/qtdesigner-manual.html)
+2. [PyCharm Professional](https://www.jetbrains.com/es-es/pycharm/download/#section=windows)
+
+## Run the project
+1. Clone the repo
+2. Open the project's folder in PyCharm, set the script path to `main.py`, or open PyCharm's terminal and run 
+`python main.py`

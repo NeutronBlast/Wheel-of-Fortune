@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>650</x>
-     <y>140</y>
+     <y>90</y>
      <width>141</width>
      <height>51</height>
     </rect>
@@ -107,19 +107,6 @@
     <string>Letter/Phrase</string>
    </property>
   </widget>
-  <widget class="QLabel" name="turn_l">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>90</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TURN:</string>
-   </property>
-  </widget>
   <widget class="QCheckBox" name="phrase_checkbox">
    <property name="geometry">
     <rect>
@@ -173,7 +160,7 @@
     <rect>
      <x>320</x>
      <y>190</y>
-     <width>141</width>
+     <width>231</width>
      <height>51</height>
     </rect>
    </property>
@@ -205,7 +192,7 @@
     <rect>
      <x>650</x>
      <y>190</y>
-     <width>141</width>
+     <width>231</width>
      <height>51</height>
     </rect>
    </property>
